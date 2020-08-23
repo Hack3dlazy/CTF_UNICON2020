@@ -52,7 +52,34 @@ We can see the port thats being used to communicate with the C2 server as TCP po
 
 BTW nice DJ SKILLS Keith Meyr's I bounced to that music lunch breakout. Shout out to Thai message.
 
+This next part of the CTF challenge was rough not knowing how to read the timings for how often the malware called home? After searching a bunch of rabbit holes finding all kinds of info on RDP streams and trying this and that getting no data output. I eventually asked for rederiction. So dmayar on discord thanks agian for being CTF Support. I found that I wasnt looking in the right place. I actually looked at the statistics tab and selected tcp stream timings. I dont think it was reading exact bc I was informed later that starting the payload 3 times offset my timings but I rounded up based on that on got super lucky. The best way to do this i found was to look at the timings of the malware manualy and calculate it yourself.
 
+![image](https://user-images.githubusercontent.com/61480759/90970768-7d038500-e4ce-11ea-9224-9b6f890b7ffc.png)
+
+Lasty to end off level 1 we have to dig into the level1.exe properties and check the details to see that the original file name was dropper_cs.exe handy info for digging into CVE data that may be related to this type of malware. 
+
+![image](https://user-images.githubusercontent.com/61480759/90970842-5bef6400-e4cf-11ea-9330-bf6c46e351e6.png)
+
+# LEVEL 2- GET READY FOR SOME SYSMON
+
+[**C2 Matrix Lab**](https://howto.thec2matrix.com/lab-infrastructure/c2-matrix-eval-lab)
+
+To start level 2 labs we can go visit the above link to C2 Matrix eval lab. For this level we need download sysinternals or as this lab suggests just the single tool from the sysinternals toolkit sysmon. 
+
+Download the sysmon tools from MS then install them using the command line. First go to the derictory you saved the folder and cd into the folder Sysmon. Run the below command to get the tool started and running. 
+>Sysmon64.exe -i -h md5 -l -n
+
+Here is some documentation to help you get started installing and figuring out the sysmon tool a bit before you get to threat hunting. 
+
+[**QCURE SYSMON**](https://cqureacademy.com/blog/server-monitoring/sysmon)
+
+For my notes here on this write-up im adding in this step before level 3 where it comes into play. We will need to enable DNS logging to the sysmon tool by adding a script into the sysmon folder and running another set of commands to start the DNS logging in the sysmon tool.
+
+![image](https://user-images.githubusercontent.com/61480759/90971061-9e19a500-e4d1-11ea-9523-ab5315e307a4.png)
+
+First Flag of level 2 is to stop the malware level1.exe process using the task manager or process monitor.
+
+![image](https://user-images.githubusercontent.com/61480759/90970974-ec7a7400-e4d0-11ea-90d6-180cd0b9d061.png
 
 
 
