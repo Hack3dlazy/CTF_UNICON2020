@@ -44,7 +44,9 @@ Also check this site out for filters to help with your pcap analysis. This site 
 [**Filter Expressions**](https://unit42.paloaltonetworks.com/using-wireshark-display-filter-expressions/)
 
 use this command in your filters bar:
->(http.request or ssl.handshake.type == 1 or tcp.flags eq Ox0002 or dns) and !(udp.port eq 1900) 
+>(http.request or ssl.handshake.type == 1 or tcp.flags eq Ox0002 or dns) and !(udp.port eq 1900)
+
+![image](https://user-images.githubusercontent.com/61480759/90970361-9a822000-e4c9-11ea-8fe8-1051df19931c.png)
 
 We can see the port thats being used to communicate with the C2 server as TCP port 443 = https
 
