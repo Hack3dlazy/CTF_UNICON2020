@@ -101,9 +101,14 @@ The command to filter the the IP using wireshark would be:
 
 >ip.addr = <ip>
   
-We can see how often the connection home was using sysmon as well.
+We can see how often the connection on average calls home using sysmon as well.
 
 ![image](https://user-images.githubusercontent.com/61480759/91074233-db7d5000-e601-11ea-822b-6a709ce048b3.png)
+
+We can locate the jitter by seeing and manually compuiting it using wireshark or you can also get a rough estimate using statistics analysis > sequence numbers 
+
+
+
 
 
 
