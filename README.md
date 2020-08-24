@@ -79,7 +79,7 @@ For my notes here on this write-up im adding in this step before level 3 where i
 
 First Flag of level 2 is to stop the malware level1.exe process using the task manager or process monitor.
 
-![image](https://user-images.githubusercontent.com/61480759/90970974-ec7a7400-e4d0-11ea-90d6-180cd0b9d061.png
+![image](https://user-images.githubusercontent.com/61480759/90970974-ec7a7400-e4d0-11ea-90d6-180cd0b9d061.png)
 
 
 
