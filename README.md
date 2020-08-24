@@ -99,13 +99,61 @@ Sysmon logs the port the .bat file used as well.
 
 The command to filter the the IP using wireshark would be:
 
->ip.addr = <ip>
+>ip.addr = ip of attack machine
   
 We can see how often the connection on average calls home using sysmon as well.
 
 ![image](https://user-images.githubusercontent.com/61480759/91074233-db7d5000-e601-11ea-822b-6a709ce048b3.png)
 
-We can locate the jitter by seeing and manually compuiting it using wireshark or you can also get a rough estimate using statistics analysis > sequence numbers 
+We can locate the jitter manually by viewing it using wireshark and adding doing the math or you can also get a rough estimate using statistics analysis > sequence numbers. My jitter is above the actual variance level becuase I ran the shell 3 times and didnt close the first two process before running this capture.  
+
+![image](https://user-images.githubusercontent.com/61480759/91084060-ff945d80-e610-11ea-8531-a82ae409bab5.png)
+
+The more accurate way of doing this is manually with WireShark.
+
+![image](https://user-images.githubusercontent.com/61480759/91084112-15a21e00-e611-11ea-9469-7af7ae56a69b.png)
+
+Somewhere in the questions we are asked what url the payload calls to in order to offload the exploit to the vulnerable host. I love to use tshark for this stuff you can also use **Packet Total**. Here is a command I run after saving the pcap file to the host device. 
+> tshark -Y http.request.uri -r file.pcap
+
+![image](https://user-images.githubusercontent.com/61480759/91085070-8269e800-e612-11ea-86b8-2d8fd361a754.png)
+
+we can try to analyse wireshark further filtering by IP and then drilling down the picture I have was not the right IP but is the same concept to find the correct URL link.
+
+> http://159.89.227.95/news.php
+
+![image](https://user-images.githubusercontent.com/61480759/91085297-db398080-e612-11ea-8216-afda23c8cecf.png)
+
+**This says its admin/get.php but its not it but similar findings are made for the correct URL.**
+
+To find the processes created by level2.bat grab sysmon, BTW im starting to love this tool for system monitoring ;]
+
+![image](https://user-images.githubusercontent.com/61480759/91085567-43886200-e613-11ea-8376-aaf2dc56e104.png)
+
+First process is **cmd.exe**.
+Then second process it **powershell.exe**.
+
+![image](https://user-images.githubusercontent.com/61480759/91085809-98c47380-e613-11ea-9e0f-d44ae0ed3deb.png)
+
+You can see that the first trigger for Sysmon to pop is Event ID 1.
+
+![image](https://user-images.githubusercontent.com/61480759/91085869-b0036100-e613-11ea-925c-45653fd7fbd4.png)
+
+Network connection ID = 3 
+
+![image](https://user-images.githubusercontent.com/61480759/91086151-1d16f680-e614-11ea-8ec5-cc3b8aedf297.png)
+
+To end level 2 we are asked what C2 Framework was used? I racked my brain checking out the C2 lab link and after reading more about C2 framework I started down the black hole. I dicided to snag a hint it went something like **Its one of the most popular frameworks...dummy**. I always over complicate the EZPZ stuff. I searched that information and put two and two together. 
+
+![image](https://user-images.githubusercontent.com/61480759/91086563-b3e3b300-e614-11ea-825f-ba2a179ba3b4.png)
+
+# LEVEL 3 - THE GATE TO THE SWAG!
+
+![image](https://user-images.githubusercontent.com/61480759/91086597-c100a200-e614-11ea-9790-b00c5822408b.png)
+
+
+
+
 
 
 
