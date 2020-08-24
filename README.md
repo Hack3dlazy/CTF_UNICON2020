@@ -30,6 +30,8 @@ More info on how to grab hash files here:
 The command I used to grab the command was 
 >certutil -hashfile level1.exe sha1
 
+
+
 ## Now execute the payload. We need the IP the malware is calling back to?
 
 You need to download Wireshark for this one.
@@ -81,7 +83,27 @@ First Flag of level 2 is to stop the malware level1.exe process using the task m
 
 ![image](https://user-images.githubusercontent.com/61480759/90970974-ec7a7400-e4d0-11ea-90d6-180cd0b9d061.png)
 
+Grab the MD5 hash of level2 payload this time using:
 
+>certutil -hashfile <filename> md5
+  
+![image](https://user-images.githubusercontent.com/61480759/91073396-9c9aca80-e600-11ea-8b6a-597cd6dd1bac.png)
+
+Open Wireshark now to the same eth port you were listing on before. We need to grab the IP that level2.bat connects to. I used sysmon to get this information first but you could have grabbed it just as easy with wireshark.
+
+![image](https://user-images.githubusercontent.com/61480759/91073698-0ca95080-e601-11ea-9503-6e54c1b632d0.png)
+
+Sysmon logs the port the .bat file used as well.
+
+![image](https://user-images.githubusercontent.com/61480759/91073841-48441a80-e601-11ea-8ee5-dca977ef8a85.png)
+
+The command to filter the the IP using wireshark would be:
+
+>ip.addr = <ip>
+  
+We can see how often the connection home was using sysmon as well.
+
+![image](https://user-images.githubusercontent.com/61480759/91074233-db7d5000-e601-11ea-822b-6a709ce048b3.png)
 
 
 
