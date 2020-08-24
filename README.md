@@ -85,7 +85,7 @@ First Flag of level 2 is to stop the malware level1.exe process using the task m
 
 Grab the MD5 hash of level2 payload this time using:
 
->certutil -hashfile <filename> md5
+>certutil -hashfile filename md5
   
 ![image](https://user-images.githubusercontent.com/61480759/91073396-9c9aca80-e600-11ea-8b6a-597cd6dd1bac.png)
 
@@ -151,68 +151,37 @@ To end level 2 we are asked what C2 Framework was used? I racked my brain checki
 
 ![image](https://user-images.githubusercontent.com/61480759/91086597-c100a200-e614-11ea-9790-b00c5822408b.png)
 
+After a quick sign-up from the swag bag form I hopped back over to level3.
 
+Once agian stop the old payload from running and download the new payload and grab the sha256 hash of the unzipped payload.
 
+> certutil -hashfile filename sha256
 
+**Here is the point were we need to enable DNS logging with sysmon.**
 
+So create the file:
+> config-dnsquery.xml
+and place it into the sysmon folder were you orginally installed it and write this script info into the file. Then Save. 
 
+![image](https://user-images.githubusercontent.com/61480759/91087580-446ec300-e616-11ea-9ae5-577cf76a62ff.png)
 
+Then run the command:
+>Sysmon.exe -c config-dnsquery.xml
 
+![image](https://user-images.githubusercontent.com/61480759/91087647-69633600-e616-11ea-9d78-d498697ca5e7.png)
 
+ Me at this point, **"At this point enabling sysmon to accept dns traffic was critcal I only had like 47 min left and I thought to myself how hard is this going to be."**
+ 
+Next what is the domain level3.exe calls out to? Just use wireshark and analyse the DNS filter. You find that when you fire up the payload shell it calls to madrid.scythedemo.com you can use sysmon or wireshark. 
 
+You can then use NSLookup to see the IP associated with or madrid.scythedemo.com. **I forget to do this step and did it 10 seconds after time ran out.** I was pushing that last 45 min agianst the clock and dont have pictures of the sysmon or wireshark outputs. Will be adding those after tuesdays walkthrough along with other usefull information.
 
+![image](https://user-images.githubusercontent.com/61480759/91088494-bb588b80-e617-11ea-94cf-2e23f0a331cd.png)
 
+Our last few questions are about average of time the malware takes to heartbeat home? and jitter intervals. Agian we can analyse this data manualy by viewing it in wireshark or finding the event ID's in sysmon. 
 
+PS. im still analyzing the payload on level3 will have write finished after submission time. 
 
-
-
-
-
-
-
-
-
-
-
-_Italic_
-**text**
-_underline **bold here**_
-
-# header
-
-## sub header
-
-## Sub Sub Header
-
-[Visit My Site for more info](http://hack3dlazy.com)
-
-[visit **Hack3dlazy**](http://hack3dlazy.com)
-
-![Tigers rule!](<URLfor pic>)
----![Tigers rule!](https://upload.wikimedia.org/wikipedia/commons/5/56/Tiger.50.jpg)![Tigers rule!](https://upload.wikimedia.org/wikipedia/commons/5/56/Tiger.50.jpg)
-##![Tigers rule!](https://upload.wikimedia.org/wikipedia/commons/5/56/Tiger.50.jpg)![Tigers rule!](https://upload.wikimedia.org/wikipedia/commons/5/56/Tiger.50.jpg)
-
-
-'''
-public static void main(){
-}
-...
-
-> Four score and highlighted text for the Hack3dlazy!!!
-
-- Item 
-  -sub Item
-- item 2
-
-1. num _italic_ 1
-2. num 2 **Bolded** 2
-
-All this is in one paragraph
-
-Except this will be in another
-
-
-[visit **Hack3dlazy**](http://hack3dlazy.com)
-
+I loved the rundown on malware analysis that this CTF showed us. Never have I done a CTF and learned so much in just a few hours that I could take to the real world as practical skills. Later the next day I used this technique to dig through a system in our sandbox environment at my workplace. Showed some poeple what was up, would love to see CTF likes this pop up agian. Also check out other content by unicon and scythe. Can't wait to do it agian next year. See you tuesday for an run-down **jorge@scythe.io**
 
 [visit **Hack3dlazy**](http://hack3dlazy.com)
