@@ -184,4 +184,30 @@ PS. im still analyzing the payload on level3 will have write finished after subm
 
 I loved the rundown on malware analysis that this CTF showed us. Never have I done a CTF and learned so much in just a few hours that I could take to the real world as practical skills. Later the next day I used this technique to dig through a system in our sandbox environment at my workplace. Showed some poeple what was up, would love to see CTF likes this pop up agian. Also check out other content by unicon and scythe. Can't wait to do it agian next year. See you tuesday for an run-down **jorge@scythe.io**
 
+# BONUS ANLAYSIS as promised.
+
+
+Getting down and dirty with the good old sysmon I acutally learned how to read the event properties to see exactly what the malware was trying to do it preformed a list of cmds. I dug through the event ID 1 process create, then Dug back through the event ID 5 process terminate. Here is a **long long list of the event processes.** Look closely to the commandline: section it details the process well. Also I believe the malware was using conhost to drag and drop things to the command line during this process as well. 
+![image](https://user-images.githubusercontent.com/61480759/91239620-b540d880-e705-11ea-92dd-07c92356fc0f.png)
+![image](https://user-images.githubusercontent.com/61480759/91239638-beca4080-e705-11ea-8fd5-1d43736e93a2.png)
+![image](https://user-images.githubusercontent.com/61480759/91239652-ca1d6c00-e705-11ea-8375-eae9742b01dd.png)
+![image](https://user-images.githubusercontent.com/61480759/91239670-d6092e00-e705-11ea-8d5b-7e2be44f1f1d.png)
+![image](https://user-images.githubusercontent.com/61480759/91239706-e3beb380-e705-11ea-848e-1efc9adb8c4b.png)
+![image](https://user-images.githubusercontent.com/61480759/91239731-e9b49480-e705-11ea-97d6-6b27c9e0d69c.png)
+![image](https://user-images.githubusercontent.com/61480759/91239777-f638ed00-e705-11ea-8d70-5daf7848d160.png)
+![image](https://user-images.githubusercontent.com/61480759/91239800-fcc76480-e705-11ea-8492-f5cff8cbb034.png)
+![image](https://user-images.githubusercontent.com/61480759/91239813-0355dc00-e706-11ea-9902-ecbed3b0869d.png)
+![image](https://user-images.githubusercontent.com/61480759/91239832-09e45380-e706-11ea-99dd-8f036aca3945.png)
+![image](https://user-images.githubusercontent.com/61480759/91239844-11a3f800-e706-11ea-86be-c52ca36d825a.png)
+![image](https://user-images.githubusercontent.com/61480759/91239853-1799d900-e706-11ea-9f06-d13e5a4755d1.png)
+![image](https://user-images.githubusercontent.com/61480759/91239863-1ec0e700-e706-11ea-86b3-b7d56bc8e394.png)
+![image](https://user-images.githubusercontent.com/61480759/91239886-2a141280-e706-11ea-8e25-105b78115eb4.png)
+![image](https://user-images.githubusercontent.com/61480759/91239896-30a28a00-e706-11ea-8d03-ff52caf57929.png)
+![image](https://user-images.githubusercontent.com/61480759/91239904-37310180-e706-11ea-8848-e6430ded195d.png)
+![image](https://user-images.githubusercontent.com/61480759/91239913-3c8e4c00-e706-11ea-8288-2466a07877f1.png)
+![image](https://user-images.githubusercontent.com/61480759/91239935-431cc380-e706-11ea-9326-f8a080c85482.png)
+![image](https://user-images.githubusercontent.com/61480759/91239954-487a0e00-e706-11ea-97b3-7806737bfb95.png)
+![image](https://user-images.githubusercontent.com/61480759/91239969-4dd75880-e706-11ea-8732-bbbcd5dbf8e7.png)
+![image](https://user-images.githubusercontent.com/61480759/91239986-5465d000-e706-11ea-928a-2ae9ce5590f9.png)
+
 [visit **Hack3dlazy**](http://hack3dlazy.com)
